@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@layer components {
+
+    .nav-link {
+        /* @apply hover:shadow-red-500; */
+        /* @apply cursor-pointer drop-shadow-[px_0_#7a7a7a]; */
+        @apply border font-Press-Start border-black mx-1 text-[0.7rem] md:text-xl px-2 bg-white drop-shadow-[5px_0_#000] py-3 rounded hover:[text-shadow:4px_0_#7a7a7a] hover:drop-shadow-[5px_0_#7a7a7a] hover:text-gray-200 hover:bg-black transition-all duration-100 ease-linear;
+    }
+}

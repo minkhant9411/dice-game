@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+
+        .dice {
+            text-align: center;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        body {
+
+            background-color: rgb(222, 222, 222);
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            /* font-family: "Lobster", cursive; */
+            padding: 15px;
+            margin: 0;
+            color: rgb(0, 0, 0);
+            text-shadow: 5px 0 #7a7a7a;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: rgb(0, 0, 0);
+            text-shadow: 5px 0 #7a7a7a;
+            /* font-family: "Indie Flower", cursive; */
+        }
+
+        img {
+            width: 10rem;
+            border-radius: 10px;
+            box-shadow: 5px 0 grey;
+        }
+
+        .bottom {
+            padding-top: 30px;
+        }
+
+        .butn {
+            background: transparent;
+            border: 1px solid black;
+            /* font-family: "Indie Flower", cursive; */
+            border-radius: 7px;
+            color: rgb(0, 0, 0);
+            text-shadow: 5px 0 #7a7a7a;
+            box-shadow: 5px 0 #000000;
+            font-size: 30px;
+            padding: 25px 16px;
+            text-decoration: none;
+            /* border: 0px solid; */
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .butn:hover {
+            text-decoration: none;
+            background-color: black;
+            color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Let's Roll!</h1>
+
+        <div class="dice">
+            <p class="Player1">Player 1</p>
+            <img class="img1" src="dice6.png">
+        </div>
+
+        <div class="dice">
+            <p class="Player2">Player 2</p>
+            <img class="img2" src="dice6.png">
+        </div>
+        <div class="bottom">
+            <button type="button" class="butn" onClick="rollTheDice()">
+                Roll the Dice
+            </button>
+        </div>
+    </div>
+
+    <!-- <div class="container bottom">
+        <button type="button" class="butn" onClick="editNames()">
+            Edit Names
+        </button>
+    </div> -->
+    <script>
+
+        // Player name
+        var player1 = "Player 1";
+        var player2 = "Player 2";
+
+        // Function to change the player name
+        function editNames() {
+            player1 = prompt("Change Player1 name");
+            player2 = prompt("Change player2 name");
+
+            document.querySelector("p.Player1").innerHTML = player1;
+            document.querySelector("p.Player2").innerHTML = player2;
+        }
+
+        // Function to roll the dice
+        function rollTheDice() {
+            document.querySelector(".img1").setAttribute("src", "rolling.gif");
+            document.querySelector(".img2").setAttribute("src", "rolling2.gif");
+            document.querySelector("h1").innerHTML
+                = ("Let's Roll!");
+            setTimeout(function () {
+                var randomNumber1 = Math.floor(Math.random() * 6) + 1;
+                var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+
+                document.querySelector(".img1").setAttribute("src",
+                    "dice" + randomNumber1 + ".png");
+
+                document.querySelector(".img2").setAttribute("src",
+                    "dice" + randomNumber2 + ".png");
+
+                if (randomNumber1 === randomNumber2) {
+                    document.querySelector("h1").innerHTML = "Draw!";
+                }
+
+                else if (randomNumber1 < randomNumber2) {
+                    document.querySelector("h1").innerHTML
+                        = (player2 + " WINS!");
+                }
+
+                else {
+                    document.querySelector("h1").innerHTML
+                        = (player1 + " WINS!");
+                }
+            }, 2000);
+        }
+    </script>
+
+</body>
+
+</html>
